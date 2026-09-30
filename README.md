@@ -1,28 +1,72 @@
-# Vanira e Vanessa - Salão Especializado
+# Vanira e Vanessa - Gestão de Salão & Portal do Cliente (Android)
 
-Sistema inteligente de gestão para salão de beleza com agenda diária, cadastro e histórico de clientes, controle financeiro & contas a receber, gestão de estoque e produtos, portal do cliente com agendamento online em tempo real, integração para WhatsApp e IA assistente executiva.
+Aplicativo Android nativo moderno desenvolvido com **Kotlin** e **Jetpack Compose** (Material Design 3) para gestão integral de salão de beleza e estética capilar, com agendamentos, clientes, finanças, estoque, profissionais, portal do cliente e consultoria inteligente.
 
-## Tecnologias
+## Tecnologias & Arquitetura
 
-- **React 19** + **TypeScript**
-- **Vite** + **Tailwind CSS v4**
-- **Express Backend** com proxy em dev na porta 3000
-- **@google/genai** SDK para assistente executiva inteligente com fallback nativo de analytics
-- **Armazenamento e Sincronização**: LocalStorage com exportação/importação JSON e integração SQL / Supabase Realtime
+- **Kotlin 2.1.0**
+- **Jetpack Compose & Material Design 3 (M3)**
+- **Arquitetura MVVM (Model-View-ViewModel)** com Coroutines e `StateFlow`
+- **Gradle Kotlin DSL (.gradle.kts)** com Version Catalog (`gradle/libs.versions.toml`)
+- **Design Adaptativo & Edge-to-Edge (`enableEdgeToEdge`)**
+- **Ícones Adaptativos Customizados Material You** (`ic_launcher` & `ic_launcher_round`)
+- **Intents Nativas do Android**:
+  - Disparos diretos para **WhatsApp** com mensagens personalizadas de confirmação e pós-atendimento
+  - Adição direta de agendamentos ao **Google Agenda** do dispositivo
 
 ## Funcionalidades Principais
 
-1. **Painel de Controle (Dashboard)**: Métricas em tempo real de atendimentos do dia (confirmados, aguardando, cancelados), faturamento do mês, contas a receber, atalhos rápidos e listagem dos próximos horários.
-2. **Agenda Interativa**: Visão diária por data e filtro por profissional (Vanira, Vanessa, Juliana, Beatriz), prevenção em tempo real de conflitos de horários e bloqueios de intervalos/almoço.
-3. **Portal do Cliente ("Agende seu Horário")**:
-   - Navegação por passos: Escolha de serviço, especialista, data e horários disponíveis em verde (horários ocupados bloqueados automaticamente em vermelho).
-   - "Meus Horários": Consulta por WhatsApp, cancelamento e reagendamento seguro.
-   - "Enviar Web App": Compartilhamento no WhatsApp da cliente para agendamento direto pelo celular.
-   - "Dúvidas & IA": Consultora inteligente para tirar dúvidas sobre mechas, coloração, cronograma e cuidados.
-4. **Clientes & Retenção**: Busca avançada por histórico e preferências capilares, alerta de clientes inativos há mais de 60 dias e disparo de mensagens personalizadas de retorno via WhatsApp.
-5. **Cardápio de Serviços**: Gestão completa de valores, duração e especialistas habilitadas.
-6. **Financeiro & Caixa**: Lançamentos, contas a receber, marcação de pagamento (PIX, cartões, dinheiro) e lembretes de cobrança com link PIX para WhatsApp.
-7. **Estoque de Produtos**: Controle de itens para revenda e consumo interno com alerta de estoque baixo e botões rápidos de ajuste.
-8. **Equipe**: Gestão das profissionais, avaliações, especialidades e status ativo na agenda.
-9. **IA Assistente Executiva**: Relatórios automáticos de faturamento, ticket médio, clientes de mechas/química e geração de mensagens prontas para WhatsApp.
-10. **Segurança e Nuvem**: Modo de bloqueio exclusivo de cliente com PIN administrativo (1234), backup/restauração JSON e gerador de script SQL para Supabase / PostgreSQL.
+1. **Painel de Controle (Dashboard)**:
+   - Banner visual do salão com cabeçalho de boas-vindas.
+   - Contadores diários em tempo real (Total de atendimentos, Confirmados, Aguardando, Cancelados).
+   - Indicadores financeiros (Faturamento do mês, Faturamento do dia e Contas a receber).
+   - Grade de ações rápidas para novos agendamentos, novos clientes e novos serviços.
+   - Lista cronológica dos próximos atendimentos de hoje com cards interativos.
+
+2. **Agenda Interativa (Schedule)**:
+   - Seletor de dias da semana com abas dinâmicas.
+   - Filtros rápidos por profissional (Vanira, Vanessa, Juliana, Beatriz ou todas).
+   - Bloqueio de horários (intervalos de almoço ou indisponibilidade).
+   - Validação inteligente contra conflito de horários no mesmo especialista.
+   - Alteração ágil de status (Confirmado, Concluído, Cancelado).
+
+3. **Gestão de Clientes**:
+   - Busca instantânea por nome, telefone ou tipo de cabelo/química.
+   - Ficha com perfil capilar, preferências, notas técnicas e aniversário.
+   - Botão de WhatsApp direto para envio de mensagens com 1 toque.
+   - Compartilhamento personalizado do portal do cliente.
+
+4. **Cardápio de Serviços**:
+   - Categorias: Cabelo, Química & Cor, Unhas e Tratamentos.
+   - Preços em Real (R$), duração média em minutos e descrição visagista.
+   - Cadastro e exclusão de novos serviços.
+
+5. **Financeiro & Fluxo de Caixa**:
+   - Controle de lançamentos de atendimentos e recebimentos avulsos.
+   - Status de pagamento: Pago ou Pendente.
+   - Formas de pagamento: PIX, Cartão de Crédito, Cartão de Débito, Dinheiro.
+   - Botão "Receber" com confirmação rápida da forma de pagamento.
+
+6. **Controle de Estoque**:
+   - Itens de revenda e consumo profissional (Wella, Truss, Braé, Kérastase).
+   - Alerta visual para produtos abaixo do estoque mínimo.
+   - Ajuste rápido de quantidade (+1 / -1) direto pelo card.
+
+7. **Equipe de Profissionais**:
+   - Perfis de especialistas (Vanira, Vanessa, Juliana Silva, Beatriz Rocha).
+   - Classificação por estrelas (Rating 5.0).
+   - Contato direto por WhatsApp com as cabeleireiras e manicures.
+
+8. **IA Assistente Executiva**:
+   - Consultoria em tempo real com dados da operação do salão.
+   - Perguntas rápidas sobre faturamento, clientes inativos há mais de 60 dias, contas a receber, clientes de mechas/química e modelos de mensagens para WhatsApp.
+   - Cópia com 1 toque para a área de transferência.
+
+9. **Portal do Cliente ("Agende seu Horário")**:
+   - Fluxo guiado em passos: Serviço -> Profissional -> Data & Horário -> Dados -> Confirmação.
+   - Aba "Meus Horários" com consulta por número de WhatsApp e opção de cancelamento.
+   - Aba "Dicas & IA" com recomendações de cronograma capilar e cuidados com química.
+   - Modo quiosque protegido por PIN administrativo (1234) para alternar entre salão e cliente.
+
+10. **Segurança & Dados**:
+    - Backup local e opção de restauração rápida para dados de demonstração.

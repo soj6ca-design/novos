@@ -29,6 +29,7 @@ import { DatabaseBackupModal } from './components/modals/DatabaseBackupModal';
 import { ResetDataModal } from './components/modals/ResetDataModal';
 import { AdminPinModal } from './components/modals/AdminPinModal';
 import { EditSalonNameModal } from './components/modals/EditSalonNameModal';
+import { InstallAppModal } from './components/modals/InstallAppModal';
 import { Client, SalonService, Product, Professional } from './types';
 
 const MainLayout: React.FC = () => {
@@ -58,6 +59,17 @@ const MainLayout: React.FC = () => {
   const [isResetOpen, setIsResetOpen] = useState(false);
   const [isAdminPinOpen, setIsAdminPinOpen] = useState(false);
   const [isEditNameOpen, setIsEditNameOpen] = useState(false);
+  const [isInstallModalOpen, setIsInstallModalOpen] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    const handleBeforeInstall = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
+  }, []);
 
   const [isInstallRoute, setIsInstallRoute] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -117,6 +129,7 @@ const MainLayout: React.FC = () => {
         }}
         onOpenBackup={() => setIsBackupOpen(true)}
         onOpenAdminPin={() => setIsAdminPinOpen(true)}
+        onOpenInstall={() => setIsInstallModalOpen(true)}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6">
@@ -285,6 +298,26 @@ const MainLayout: React.FC = () => {
       <EditSalonNameModal
         isOpen={isEditNameOpen}
         onClose={() => setIsEditNameOpen(false)}
+      />
+
+      {/* Floating Install App Button on Mobile */}
+      <button
+        onClick={() => setIsInstallModalOpen(true)}
+        title="Instalar Aplicativo no Celular"
+        className="fixed bottom-5 right-4 z-40 sm:hidden flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-gradient-to-r from-[#6B1D4B] via-[#85275E] to-[#9E5471] text-white font-extrabold text-xs shadow-2xl border-2 border-pink-200/60 active:scale-95 transition"
+      >
+        <img
+          src="/images/icon-192.png"
+          alt="App Icon"
+          className="w-5 h-5 rounded-full object-cover border border-white"
+        />
+        <span>Instalar no Celular</span>
+      </button>
+
+      <InstallAppModal
+        isOpen={isInstallModalOpen}
+        onClose={() => setIsInstallModalOpen(false)}
+        deferredPrompt={deferredPrompt}
       />
     </div>
   );

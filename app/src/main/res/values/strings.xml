@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Vanira e Vanessa</string>
+    <string name="salon_full_title">Vanira e Vanessa Salão Especializado</string>
+    <string name="salon_tagline">Sistema inteligente de gestão para salão de beleza com agenda, clientes, financeiro, WhatsApp, IA e portal do cliente.</string>
+    
+    <!-- Navigation Tabs -->
+    <string name="tab_dashboard">Início</string>
+    <string name="tab_agenda">Agenda</string>
+    <string name="tab_clients">Clientes</string>
+    <string name="tab_services">Serviços</string>
+    <string name="tab_financial">Financeiro</string>
+    <string name="tab_inventory">Estoque</string>
+    <string name="tab_professionals">Equipe</string>
+    <string name="tab_ai_assistant">IA Consultora</string>
+    <string name="tab_client_portal">Portal Cliente</string>
+
+    <!-- Client Portal Tabs -->
+    <string name="portal_tab_book">Agendar</string>
+    <string name="portal_tab_my_appointments">Meus Horários</string>
+    <string name="portal_tab_hair_consult">Consultora IA</string>
+    <string name="portal_tab_share">Compartilhar</string>
+
+    <!-- Appointment Statuses -->
+    <string name="status_confirmed">Confirmado</string>
+    <string name="status_pending">Aguardando</string>
+    <string name="status_completed">Concluído</string>
+    <string name="status_canceled">Cancelado</string>
+    <string name="status_block">Bloqueio</string>
+
+    <!-- Actions -->
+    <string name="action_new_appointment">Novo Agendamento</string>
+    <string name="action_new_client">Novo Cliente</string>
+    <string name="action_new_service">Novo Serviço</string>
+    <string name="action_new_transaction">Nova Transação</string>
+    <string name="action_new_product">Novo Produto</string>
+    <string name="action_whatsapp">WhatsApp</string>
+    <string name="action_calendar">Google Agenda</string>
+    <string name="action_confirm">Confirmar</string>
+    <string name="action_reschedule">Reagendar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_save">Salvar</string>
+    <string name="action_close">Fechar</string>
+    <string name="action_backup">Backup Local</string>
+    <string name="action_reset">Limpar Dados</string>
+
+    <!-- Common labels -->
+    <string name="label_today">Hoje</string>
+    <string name="label_month_revenue">Faturamento Mês</string>
+    <string name="label_pending_receivables">Contas a Receber</string>
+    <string name="label_upcoming_today">Próximos Horários de Hoje</string>
+    <string name="label_admin_mode">Modo Administrador</string>
+    <string name="label_client_mode">Modo Cliente</string>
+    <string name="label_enter_pin">Digite o PIN de Segurança (Padrão: 1234)</string>
+    <string name="currency_symbol">R$</string>
+</resources>

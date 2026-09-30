@@ -27,6 +27,7 @@ interface SalonTopBarProps {
   onOpenSharePortal: () => void;
   onOpenBackup: () => void;
   onOpenAdminPin: () => void;
+  onOpenInstall?: () => void;
 }
 
 export const SalonTopBar: React.FC<SalonTopBarProps> = ({
@@ -34,6 +35,7 @@ export const SalonTopBar: React.FC<SalonTopBarProps> = ({
   onOpenSharePortal,
   onOpenBackup,
   onOpenAdminPin,
+  onOpenInstall,
 }) => {
   const {
     salonName,
@@ -91,6 +93,19 @@ export const SalonTopBar: React.FC<SalonTopBarProps> = ({
 
           {/* Quick Actions & Mode Switcher */}
           <div className="flex items-center gap-2">
+            {/* Install Mobile App Button */}
+            {onOpenInstall && (
+              <button
+                onClick={onOpenInstall}
+                title="Instalar Aplicativo no Celular"
+                className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black bg-gradient-to-r from-[#6B1D4B] to-[#9E5471] text-white shadow-xs hover:opacity-95 transition active:scale-95 shrink-0"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-pink-200" />
+                <span className="hidden sm:inline">Instalar</span>
+                <span>App</span>
+              </button>
+            )}
+
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}

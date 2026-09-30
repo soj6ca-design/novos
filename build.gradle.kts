@@ -1,11 +1,5 @@
-tasks.register("assembleDebug") {
-    doLast {
-        println("React applet assembled successfully")
-    }
-}
-
-tasks.register("lint") {
-    doLast {
-        println("React applet linted successfully")
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.compose.compiler) apply false
 }
