@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bella-primary: #6B1D4B;
+    --bella-primary-dark: #FFB0D0;
+    --bella-primary-container: #FFD8E6;
+    --bella-secondary: #9E5471;
+    --bella-secondary-container: #FFD9E5;
+    --bella-gold: #B8860B;
+    --bella-gold-light: #D4AF37;
+    --status-confirmed: #2E7D32;
+    --status-pending: #E65100;
+    --status-completed: #6A1B9A;
+    --status-canceled: #C62828;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Plus Jakarta Sans', serif;
+  }
+}
+
+/* Custom scrollbars for clean luxury feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5D5DC;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E5471;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4A3343;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #85275E;
+}
